@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
-import axios from "axios";
+import api from "../api";
 
 function Signup() {
     const [name, setName] = useState('');
@@ -9,7 +9,7 @@ function Signup() {
     const navigate = useNavigate();
 
     useEffect(() => {
-      axios.get("http://localhost:3000/api/v1/blog/me",{withCredentials: true}).then((res) => {
+      api.get("http://localhost:3000/api/v1/blog/me",{withCredentials: true}).then((res) => {
         console.log(res);
         navigate("/dashboard");
       }).catch((err) => {
@@ -19,7 +19,7 @@ function Signup() {
 
     const handleSignup = (e: React.FormEvent) => {
         e.preventDefault();
-        axios.post("http://localhost:3000/api/v1/user/signup", {
+        api.post("http://localhost:3000/api/v1/user/signup", {
             name,
             email,
             password

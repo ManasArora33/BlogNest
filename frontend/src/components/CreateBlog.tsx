@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router";
-import axios from "axios";
+import api from "../api";
 
 interface User {
   name: string;
@@ -15,7 +15,7 @@ function CreateBlog() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios
+    api
       .get("http://localhost:3000/api/v1/blog/me", { withCredentials: true })
       .then((res) => setUser(res.data.user))
       .catch(() => navigate("/signup"));
@@ -23,7 +23,7 @@ function CreateBlog() {
 
   const handleCreateBlog = async () => {
     try {
-      const response = await axios.post(
+      const response = await api.post(
         "http://localhost:3000/api/v1/blog",
         { title, content },
         { withCredentials: true }

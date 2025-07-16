@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router";
+import api from "../api";
 
 interface Blog {
   id: string;
@@ -22,7 +22,7 @@ function Dashboard() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/v1/blog/me", { withCredentials: true })
+    api.get("http://localhost:3000/api/v1/blog/me", { withCredentials: true })
       .then((res) => {
         setUser(res.data.user);
       })
@@ -32,7 +32,7 @@ function Dashboard() {
   }, [navigate]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/v1/blog/bulk/all", { withCredentials: true })
+    api.get("http://localhost:3000/api/v1/blog/bulk/all", { withCredentials: true })
       .then((res) => {
         setBlogs(res.data.blogs);
       })

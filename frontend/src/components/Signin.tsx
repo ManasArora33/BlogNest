@@ -1,7 +1,8 @@
-import axios from 'axios';
+
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useNavigate } from 'react-router';
+import api from '../api';
 
 export default function Signin() {
     const [email, setEmail] = useState('');
@@ -9,7 +10,7 @@ export default function Signin() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/v1/blog/me", { withCredentials: true }).then((res) => {
+        api.get("http://localhost:3000/api/v1/blog/me", { withCredentials: true }).then((res) => {
             console.log(res);
             navigate("/dashboard");
         }).catch((err) => {
@@ -53,7 +54,7 @@ export default function Signin() {
 
                     <form className="space-y-6" onSubmit={(e) => {
                         e.preventDefault();
-                        axios.post("http://localhost:3000/api/v1/user/signin", {
+                        api.post("http://localhost:3000/api/v1/user/signin", {
                             email,
                             password
                         }, {

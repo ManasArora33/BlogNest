@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link, useNavigate, useParams } from "react-router";
+import api from "../api";
 
 interface Blog {
   id: string;
@@ -30,7 +30,7 @@ function BlogPage() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await axios.get(`http://localhost:3000/api/v1/blog/${id}`, {
+        const res = await api.get(`http://localhost:3000/api/v1/blog/${id}`, {
           withCredentials: true,
         });
         setBlog(res.data.blog);
@@ -46,7 +46,7 @@ function BlogPage() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/v1/blog/me", {
+        const res = await api.get("http://localhost:3000/api/v1/blog/me", {
           withCredentials: true,
         });
         setUser(res.data.user);
@@ -61,7 +61,7 @@ function BlogPage() {
     const fetchAuthor = async () => {
       if (blog?.authorId) {
         try {
-          const res = await axios.get(
+          const res = await api.get(
             `http://localhost:3000/api/v1/blog/user/${blog.authorId}`,
             { withCredentials: true }
           );
@@ -76,7 +76,7 @@ function BlogPage() {
 
   const handleUpdate = async () => {
     try {
-      await axios.put(
+      await api.put(
         `http://localhost:3000/api/v1/blog`,
         {
           id: blog?.id,
@@ -96,7 +96,7 @@ function BlogPage() {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`http://localhost:3000/api/v1/blog/${blog?.id}`, {
+      await api.delete(`http://localhost:3000/api/v1/blog/${blog?.id}`, {
         withCredentials: true,
       });
       alert("Blog deleted successfully!");

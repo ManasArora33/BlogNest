@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link, useNavigate } from "react-router";
+import api from "../api";
 
 interface User {
     name: string;
@@ -13,7 +13,7 @@ function Profile() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:3000/api/v1/blog/me", { withCredentials: true })
+        api.get("http://localhost:3000/api/v1/blog/me", { withCredentials: true })
             .then((res) => {
                 setUser(res.data.user);
             })
@@ -27,7 +27,7 @@ function Profile() {
     }, [navigate]);
 
     const handleLogout = () => {
-        axios.get("http://localhost:3000/api/v1/user/signout", { withCredentials: true })
+        api.get("http://localhost:3000/api/v1/user/signout", { withCredentials: true })
             .then(() => {
                 alert("Successfully Logged Out");
                 navigate("/signin");
