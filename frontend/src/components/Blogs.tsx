@@ -22,7 +22,7 @@ function Blogs() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    api.get("http://localhost:3000/api/v1/blog/me", { withCredentials: true })
+    api.get("/api/v1/blog/me", { withCredentials: true })
       .then((res) => {
         setUser(res.data.user);
       })
@@ -32,7 +32,7 @@ function Blogs() {
   }, [navigate]);
 
   useEffect(() => {
-    api.get("http://localhost:3000/api/v1/blog/bulk", { withCredentials: true })
+    api.get("/api/v1/blog/bulk", { withCredentials: true })
       .then((res) => {
         setBlogs(res.data.blogs);
       })

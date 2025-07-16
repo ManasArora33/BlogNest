@@ -13,7 +13,7 @@ function Profile() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        api.get("http://localhost:3000/api/v1/blog/me", { withCredentials: true })
+        api.get("/api/v1/blog/me", { withCredentials: true })
             .then((res) => {
                 setUser(res.data.user);
             })
@@ -27,7 +27,7 @@ function Profile() {
     }, [navigate]);
 
     const handleLogout = () => {
-        api.get("http://localhost:3000/api/v1/user/signout", { withCredentials: true })
+        api.get("/api/v1/user/signout", { withCredentials: true })
             .then(() => {
                 alert("Successfully Logged Out");
                 navigate("/signin");

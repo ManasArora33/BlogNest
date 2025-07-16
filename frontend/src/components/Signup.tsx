@@ -9,7 +9,7 @@ function Signup() {
     const navigate = useNavigate();
 
     useEffect(() => {
-      api.get("http://localhost:3000/api/v1/blog/me",{withCredentials: true}).then((res) => {
+      api.get("/api/v1/blog/me",{withCredentials: true}).then((res) => {
         console.log(res);
         navigate("/dashboard");
       }).catch((err) => {
@@ -19,7 +19,7 @@ function Signup() {
 
     const handleSignup = (e: React.FormEvent) => {
         e.preventDefault();
-        api.post("http://localhost:3000/api/v1/user/signup", {
+        api.post("/api/v1/user/signup", {
             name,
             email,
             password

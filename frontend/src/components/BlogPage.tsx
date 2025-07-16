@@ -30,7 +30,7 @@ function BlogPage() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const res = await api.get(`http://localhost:3000/api/v1/blog/${id}`, {
+        const res = await api.get(`/api/v1/blog/${id}`, {
           withCredentials: true,
         });
         setBlog(res.data.blog);
@@ -46,7 +46,7 @@ function BlogPage() {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await api.get("http://localhost:3000/api/v1/blog/me", {
+        const res = await api.get("/api/v1/blog/me", {
           withCredentials: true,
         });
         setUser(res.data.user);
@@ -62,7 +62,7 @@ function BlogPage() {
       if (blog?.authorId) {
         try {
           const res = await api.get(
-            `http://localhost:3000/api/v1/blog/user/${blog.authorId}`,
+            `/api/v1/blog/user/${blog.authorId}`,
             { withCredentials: true }
           );
           setAuthor(res.data.user);
@@ -77,7 +77,7 @@ function BlogPage() {
   const handleUpdate = async () => {
     try {
       await api.put(
-        `http://localhost:3000/api/v1/blog`,
+        `/api/v1/blog`,
         {
           id: blog?.id,
           title: editedTitle,
@@ -96,7 +96,7 @@ function BlogPage() {
 
   const handleDelete = async () => {
     try {
-      await api.delete(`http://localhost:3000/api/v1/blog/${blog?.id}`, {
+      await api.delete(`/api/v1/blog/${blog?.id}`, {
         withCredentials: true,
       });
       alert("Blog deleted successfully!");

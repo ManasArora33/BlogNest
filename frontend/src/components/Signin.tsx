@@ -10,7 +10,7 @@ export default function Signin() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        api.get("http://localhost:3000/api/v1/blog/me", { withCredentials: true }).then((res) => {
+        api.get("/api/v1/blog/me", { withCredentials: true }).then((res) => {
             console.log(res);
             navigate("/dashboard");
         }).catch((err) => {
@@ -54,7 +54,7 @@ export default function Signin() {
 
                     <form className="space-y-6" onSubmit={(e) => {
                         e.preventDefault();
-                        api.post("http://localhost:3000/api/v1/user/signin", {
+                        api.post("/api/v1/user/signin", {
                             email,
                             password
                         }, {

@@ -16,7 +16,7 @@ function CreateBlog() {
 
   useEffect(() => {
     api
-      .get("http://localhost:3000/api/v1/blog/me", { withCredentials: true })
+      .get("/api/v1/blog/me", { withCredentials: true })
       .then((res) => setUser(res.data.user))
       .catch(() => navigate("/signup"));
   }, [navigate]);
@@ -24,7 +24,7 @@ function CreateBlog() {
   const handleCreateBlog = async () => {
     try {
       const response = await api.post(
-        "http://localhost:3000/api/v1/blog",
+        "/api/v1/blog",
         { title, content },
         { withCredentials: true }
       );
