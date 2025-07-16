@@ -19,7 +19,7 @@ blogRouter.post('/', async (req, res) => {
             data: {
                 title: req.body.title,
                 content: req.body.content,
-                authorId: req.authorId
+                authorId: req.authorId as string
             }
         })
         res.json({

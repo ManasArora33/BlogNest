@@ -10,6 +10,11 @@ export const authMiddleware = (req: Request, res: Response, next: NextFunction) 
     }
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as {id:string};
+        if (!decoded.id) {
+            return res.status(401).json({
+                message: "Unauthorized: Author ID missing"
+            });
+        }
         req.authorId = decoded.id;
         next();
     } catch (e) {
