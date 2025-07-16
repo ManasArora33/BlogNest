@@ -15,6 +15,7 @@
   "dependencies": {
     "@manas33179/common-app": "^1.0.0",
     "@prisma/client": "^6.11.1",
+    "@prisma/extension-accelerate": "^2.0.2",
     "@types/passport": "^1.0.17",
     "@types/passport-google-oauth20": "^2.0.16",
     "cookie-parser": "^1.4.7",

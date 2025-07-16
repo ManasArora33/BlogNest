@@ -21,12 +21,13 @@ const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cookie_parser_1.default)());
 app.use((0, cors_1.default)({
-    origin: "http://localhost:5173",
+    origin: process.env.CLIENT_URL || "http://localhost:5173",
     credentials: true
 }));
 app.use('/api/v1', router_1.default);
-const server = app.listen(3000, () => {
-    console.log('🚀 Server listening on port 3000');
+const PORT = process.env.PORT || 3000;
+const server = app.listen(PORT, () => {
+    console.log(`🚀 Server listening on port ${PORT}`);
 });
 function shutdown(signal) {
     return __awaiter(this, void 0, void 0, function* () {
