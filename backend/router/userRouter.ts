@@ -34,7 +34,7 @@ userRouter.post('/signup', async(req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // Only send cookie over HTTPS in production
-            sameSite: 'lax' // Helps mitigate CSRF attacks
+            sameSite: 'none' // Helps mitigate CSRF attacks
         });
         res.json({
             message: "User created successfully",
@@ -69,7 +69,7 @@ userRouter.post('/signin',async (req, res) => {
         res.cookie("token", token, {
             httpOnly: true,
             secure: process.env.NODE_ENV === "production", // Only send cookie over HTTPS in production
-            sameSite: 'lax' // Helps mitigate CSRF attacks
+            sameSite: 'none' // Helps mitigate CSRF attacks
         });
         res.json({
             message:"Signed in successfully",
@@ -86,7 +86,7 @@ userRouter.get('/signout', authMiddleware, async (req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
-        sameSite: "lax",
+        sameSite: "none",
         path: "/", // MUST be explicitly set to match how the cookie was created
     });
 
