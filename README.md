@@ -47,8 +47,8 @@ Follow these instructions to get a copy of the project up and running on your lo
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/medium-blog.git
-cd medium-blog
+git clone https://github.com/ManasArora33/BlogNest.git
+cd BlogNest
 ```
 
 ### 2. Backend Setup
@@ -64,7 +64,8 @@ Create a `.env` file in the `backend` directory and add the following environmen
 
 ```env
 # Example .env
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+DATABASE_URL="YourPrismaAccelerateDatabaseURL"
+DIRECT_DATABASE_URL="YourPostgresDatabaseURLCloudInstance"
 JWT_SECRET="your-super-secret-jwt-key"
 ```
 
@@ -116,7 +117,6 @@ The backend exposes the following REST API endpoints:
 | `POST` | `/api/v1/user/signup` | Register a new user.            |
 | `POST` | `/api/v1/user/signin` | Log in an existing user.        |
 | `GET`  | `/api/v1/user/signout`| Sign out from your account.        |
-
 | `POST` | `/api/v1/blog/`       | Create a new blog. |
 | `PUT`  | `/api/v1/blog/`       | Edit the current blog. |
 | `GET`  | `/api/v1/blog/bulk/all`    | Get all blog posts.             |
