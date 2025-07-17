@@ -39,22 +39,22 @@ function CreateBlog() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Navbar */}
-      <nav className="flex justify-between items-center px-8 py-4 bg-black border-b border-gray-800 sticky top-0 z-10">
-        <Link to="/" className="text-4xl font-bold">
+      <nav className="flex flex-col md:flex-row justify-between items-center px-4 md:px-8 py-4 bg-black border-b border-gray-800 sticky top-0 z-10 space-y-4 md:space-y-0">
+        <Link to="/" className="text-3xl md:text-4xl font-bold">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
             BlogNest
           </span>
         </Link>
-        <div className="flex items-center space-x-6">
-          <Link to="/dashboard" className="text-gray-300 hover:text-white transition">
+        <div className="flex items-center space-x-4">
+          <Link to="/dashboard" className="text-sm md:text-base text-gray-300 hover:text-white transition">
             All Blogs
           </Link>
-          <Link to="/blogs" className="text-gray-300 hover:text-white transition">
+          <Link to="/blogs" className="text-sm md:text-base text-gray-300 hover:text-white transition">
             Your Blogs
           </Link>
           <Link to="/profile">
-            <div className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center border-2 border-gray-700 hover:border-purple-500 transition-all duration-300">
-              <span className="text-white text-lg font-medium">
+            <div className="w-9 h-9 md:w-10 md:h-10 rounded-full bg-gray-800 flex items-center justify-center border-2 border-gray-700 hover:border-purple-500 transition-all duration-300">
+              <span className="text-white text-base font-medium">
                 {user?.name?.[0].toUpperCase()}
               </span>
             </div>
@@ -63,14 +63,14 @@ function CreateBlog() {
       </nav>
 
       {/* Create Blog Form */}
-      <main className="flex items-center justify-center p-8">
-        <div className="w-full max-w-2xl bg-gray-900 p-10 rounded-2xl shadow-xl space-y-8">
-          <h2 className="text-3xl font-bold text-center text-white">
+      <main className="flex items-center justify-center p-4 md:p-8">
+        <div className="w-full max-w-xl bg-gray-900 p-6 md:p-10 rounded-2xl shadow-xl space-y-6 md:space-y-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-white">
             Create a New Blog Post
           </h2>
 
           <form
-            className="space-y-6"
+            className="space-y-5 md:space-y-6"
             onSubmit={(e) => {
               e.preventDefault();
               handleCreateBlog();
@@ -108,7 +108,7 @@ function CreateBlog() {
             ) : (
               <button
                 type="submit"
-                className="w-full py-3 text-white font-semibold rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg"
+                className="w-full py-3 text-sm md:text-base text-white font-semibold rounded-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 transition-all duration-300 shadow-lg"
               >
                 Create Blog
               </button>

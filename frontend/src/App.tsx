@@ -8,6 +8,7 @@ import Blogs from './components/Blogs'
 import BlogPage from './components/BlogPage'
 import CreateBlog from './components/CreateBlog'
 import Landing from './components/Landing'
+import About from './components/About'
 
 function App() {
 
@@ -22,7 +23,7 @@ function App() {
         <Route path='/blog/:id' element={<BlogPage/>} />
         <Route path='/createBlog' element={<CreateBlog/>} />
         <Route path='/' element={<Landing/>}/>
-        
+        <Route path='/about' element={<About/>}/>
       </Routes>
     
   </div>
